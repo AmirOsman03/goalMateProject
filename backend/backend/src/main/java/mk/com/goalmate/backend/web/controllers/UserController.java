@@ -1,4 +1,4 @@
-package mk.com.goalmate.backend.controllers;
+package mk.com.goalmate.backend.web.controllers;
 
 import mk.com.goalmate.backend.dto.CreateUserDto;
 import mk.com.goalmate.backend.dto.DisplayUserDto;
