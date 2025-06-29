@@ -1,6 +1,5 @@
 package mk.com.goalmate.backend.config.security;
 
-
 import mk.com.goalmate.backend.security.CustomUsernamePasswordAuthenticationProvider;
 import mk.com.goalmate.backend.web.filters.JwtFilter;
 import org.springframework.context.annotation.Bean;
@@ -57,7 +56,8 @@ public class JwtSecurityWebConfig {
                                         "/api/user/register",
                                         "/api/user/login",
                                         "/api/services",
-                                        "/api/cars"
+                                        "/api/saving-goal/*",
+                                        "/api/user/login"
                                 ).permitAll()
 
 

@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -26,6 +25,9 @@ public class User implements UserDetails {
     private String name;
 
     private String surname;
+
+    public User() {
+    }
 
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
@@ -84,4 +86,69 @@ public class User implements UserDetails {
         return isEnabled;
     }
 
+
+    @Override
+    public String getUsername() {
+        return this.username;
+    }
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        isAccountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        isAccountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        isCredentialsNonExpired = credentialsNonExpired;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<SavingGoal> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<SavingGoal> goals) {
+        this.goals = goals;
+    }
 }
