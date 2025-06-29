@@ -1,12 +1,31 @@
 package mk.com.goalmate.backend.controllers;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import mk.com.goalmate.backend.dto.CreateUserDto;
+import mk.com.goalmate.backend.dto.DisplayUserDto;
+import mk.com.goalmate.backend.dto.LoginResponseDto;
+import mk.com.goalmate.backend.dto.LoginUserDto;
+import mk.com.goalmate.backend.model.User;
+import mk.com.goalmate.backend.model.exceptions.InvalidArgumentsException;
+import mk.com.goalmate.backend.model.exceptions.InvalidUserCredentialsException;
+import mk.com.goalmate.backend.model.exceptions.PasswordsDoNotMatchException;
+import mk.com.goalmate.backend.repository.UserRepository;
+import mk.com.goalmate.backend.service.application.UserApplicationService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.security.Principal;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
+
+    private final UserApplicationService userApplicationService;
+    private final UserRepository userRepository;
+
+    public UserController(UserApplicationService userApplicationService, UserRepository userRepository) {
+        this.userApplicationService = userApplicationService;
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/register")
     public ResponseEntity<DisplayUserDto> register(@RequestBody CreateUserDto createUserDto) {
